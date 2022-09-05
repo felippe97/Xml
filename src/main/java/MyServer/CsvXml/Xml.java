@@ -1,23 +1,20 @@
 package MyServer.CsvXml;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.security.PublicKey;
 
-import javax.swing.text.Document;
-import javax.swing.text.Element;
+import java.io.IOException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Source;
+
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
+
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
 
 public class Xml {
 
@@ -26,7 +23,7 @@ public class Xml {
 
 		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
 
-		org.w3c.dom.Document document = documentBuilder.newDocument();
+		Document document = documentBuilder.newDocument();
 
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
