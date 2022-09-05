@@ -32,7 +32,13 @@
       <version>3.0.0</version>
   </dependency>
 
- 
+ <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+<dependency>
+    <groupId>com.thoughtworks.xstream</groupId>
+    <artifactId>xstream</artifactId>
+    <version>1.4.17</version>
+</dependency>
+
 
   
 
