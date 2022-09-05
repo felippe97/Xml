@@ -39,7 +39,6 @@ public class ConverterRunner {
 
 	}
 	
-	@SuppressWarnings("")
 	public static Class getClassFromFile(String classPath) throws ClassNotFoundException, IOException {
 		Path p = Paths.get(classPath);
 	    URLClassLoader loader = new URLClassLoader(new URL[] {
