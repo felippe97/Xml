@@ -1,3 +1,0 @@
-Kniha, G, 15
-kniha2, G2, 70
-kniha3, g3, 50
