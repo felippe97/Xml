@@ -17,46 +17,44 @@ public class Book {
 
 	public static void main(String[] args) {
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-		
+
 		DocumentBuilder documentBuilder;
 		try {
 			documentBuilder = builderFactory.newDocumentBuilder();
-			
-			  Document document = documentBuilder.newDocument();
+
+			Document document = documentBuilder.newDocument();
 			Element docElement = document.createElement("Book");
 			document.appendChild(docElement);
-			
-			 docElement.appendChild((Node) getBook(document, "1", "Kniha", "g1", "1000"));
-			 docElement.appendChild((Node) getBook(document, "2", "Kniha2", "g2", "2000"));
-			 docElement.appendChild((Node) getBook(document, "3", "Kniha3", "g3", "3000"));
+
+			docElement.appendChild((Node) getBook(document, "1", "Kniha", "g1", "25"));
+			docElement.appendChild((Node) getBook(document, "2", "Kniha2", "g2", "40"));
+			docElement.appendChild((Node) getBook(document, "3", "Kniha3", "g3", "15"));
 			docElement.appendChild((Node) getBook(document, "4", "Kniha4", "g4", "10"));
-			  Transformer transformer = TransformerFactory.newInstance().newTransformer();
-	            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	         
-	            DOMSource source = new DOMSource(document);
-	            StreamResult console = new StreamResult(System.out);
-	            transformer.transform(source, console);
-	           
-		} catch (TransformerException | ParserConfigurationException e ) {   
-            e. printStackTrace();
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+			DOMSource source = new DOMSource(document);
+			StreamResult console = new StreamResult(System.out);
+			transformer.transform(source, console);
+
+		} catch (TransformerException | ParserConfigurationException e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
 	}
 
-	
-
 	private static Object getBook(Document document, String id, String name, String gender, String price) {
-		Element fyBook = document.createElement("Book");
-		fyBook.setAttribute("id", id);
-		fyBook.appendChild(getfyBookElements(document, fyBook, "Name", name));
-		fyBook.appendChild(getfyBookElements(document, fyBook, "Gender", gender));
-		fyBook.appendChild(getfyBookElements(document, fyBook, "Price", price));
-		return fyBook;
+		Element book = document.createElement("Book");
+		book.setAttribute("id", id);
+		book.appendChild(getfyBookElements(document, book, "Name", name));
+		book.appendChild(getfyBookElements(document, book, "Gender", gender));
+		book.appendChild(getfyBookElements(document, book, "Price", price));
+		return book;
 	}
 
-	private static Node getfyBookElements(Document doc, Element element, String name, String value) {
-		Element node = doc.createElement(name);
-		node.appendChild(doc.createTextNode(value));
+	private static Node getfyBookElements(Document document, Element element, String name, String value) {
+		Element node = document.createElement(name);
+		node.appendChild(document.createTextNode(value));
 		return node;
 	}
 }
