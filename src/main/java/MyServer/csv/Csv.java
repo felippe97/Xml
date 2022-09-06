@@ -40,12 +40,13 @@ public class Csv {
 	}
 
 	private static Book createBook(String[] metadata) {
-		String name = metadata[0];
-		String gender = metadata[1];
-		int price = Integer.parseInt(metadata[2]);
+		String id = metadata[0];
+		String name = metadata[1];
+		String gender = metadata[2];
+		int price = Integer.parseInt(metadata[3]);
 
 		// TODO Auto-generated method stub
-		return new Book(name, gender, price);
+		return new Book(id, name, gender, price);
 	}
 
 }
