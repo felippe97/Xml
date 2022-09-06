@@ -1,15 +1,15 @@
 package MyServer.CsvXml;
 
-import javax.swing.text.Element;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
+import org.w3c.dom.Document ;
+import org.w3c.dom.Element ;
+import org.w3c.dom.Node ;
+import javax.xml.parsers.DocumentBuilder ;
+import javax.xml.parsers.DocumentBuilderFactory ;
+import javax.xml.transform.OutputKeys ;
+import javax.xml.transform.Transformer ;
+import javax.xml.transform.TransformerFactory ;
+import javax.xml.transform.dom.DOMSource ;
+import javax.xml.transform.stream.StreamResult ;
 
 public class Book {
 
@@ -22,7 +22,7 @@ public class Book {
 			
 			  Document document = documentBuilder.newDocument();
 			Element docElement = document.createElement("Book");
-			document.appendChild((docElement);
+			document.appendChild(docElement);
 			
 			 docElement.appendChild(getBook(document, "1", "Kniha", "g1", "1000"));
 			 docElement.appendChild(getBook(document, "2", "Kniha2", "g2", "2000"));
