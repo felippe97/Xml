@@ -1,15 +1,17 @@
 package MyServer.CsvXml;
 
-import org.w3c.dom.Document ;
-import org.w3c.dom.Element ;
-import org.w3c.dom.Node ;
-import javax.xml.parsers.DocumentBuilder ;
-import javax.xml.parsers.DocumentBuilderFactory ;
-import javax.xml.transform.OutputKeys ;
-import javax.xml.transform.Transformer ;
-import javax.xml.transform.TransformerFactory ;
-import javax.xml.transform.dom.DOMSource ;
-import javax.xml.transform.stream.StreamResult ;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class Book {
 
@@ -30,13 +32,13 @@ public class Book {
 			docElement.appendChild(getBook(document, "4", "Kniha4", "g4", "10"));
 			  Transformer crunchifyTransformer = TransformerFactory.newInstance().newTransformer();
 	            Transformer crunchifyTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	            // Acts as a holder for a transformation Source tree in the form of a Document Object Model (DOM) tree.
+	         
 	            DOMSource source = new DOMSource(document);
-	            // Acts as an holder for a transformation result, which may be XML, plain Text, HTML, or some other form of markup.
 	            StreamResult console = new StreamResult(System.out);
 	            crunchifyTransformer.transform(source, console);
-			
-		} catch (Exception e) {
+	            System.out.println( "\nVýukový program od Crunchify. XML DOM bol úspešne vytvorený.." ) ;
+		} catch (TransformerException | ParserConfigurationException e ) {   
+            e. printStackTrace();
 			// TODO: handle exception
 		}
 	}
