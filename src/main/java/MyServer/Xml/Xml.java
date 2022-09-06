@@ -16,9 +16,12 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class Book {
+public class Xml {
 
 	public static void main(String[] args) {
+		Csv csvFile = new Csv();
+		csvFile.toString();
+		
 		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
