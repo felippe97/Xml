@@ -14,7 +14,9 @@ public class Csv {
 
 	public static void main(String[] args) throws IOException {
 		List<Book> books = redBookCsv("books.csv");
-		
+		for (Book b : books) {
+			System.out.println(b);
+		}
 
 	}
 
@@ -32,7 +34,7 @@ public class Csv {
 				line = bufferedReader.readLine();
 			}
 		} catch (Exception e) {
-			
+			// TODO: handle exception
 		}
 		return books;
 	}
@@ -42,7 +44,7 @@ public class Csv {
 		String gender = metadata[1];
 		int price = Integer.parseInt(metadata[2]);
 
-		
+		// TODO Auto-generated method stub
 		return new Book(name, gender, price);
 	}
 
