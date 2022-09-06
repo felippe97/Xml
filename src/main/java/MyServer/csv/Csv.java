@@ -12,16 +12,8 @@ import MyServer.book.Book;
 
 public class Csv {
 
-	public static void main(String[] args) throws IOException {
-		List<Book> books = redBookCsv("books.txt");
-		for (Book b : books) {
-			System.out.println(b);
-		}
-
-	}
-
 	private static List<Book> redBookCsv(String fileName) throws IOException {
-
+		fileName = "books.txt";
 		List<Book> books = new ArrayList<>();
 
 		Path path = Paths.get(fileName);
@@ -44,7 +36,6 @@ public class Csv {
 		String gender = metadata[1];
 		int price = Integer.parseInt(metadata[2]);
 
-		// TODO Auto-generated method stub
 		return new Book(name, gender, price);
 	}
 
