@@ -2,56 +2,41 @@ package MyServer.Xml;
 
 import com.opencsv.exceptions.CsvException;
 import MyServer.csv.Csv;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-public class Xml {
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-	public static void main(String[] args)throws ClassNotFoundException, CsvException {
 
 		
-try {
-			
-			Csv.convert(args[0], args[1], getClassFromFile(args[2]));
-			TransformerFactory tfactory = TransformerFactory.newInstance();
-			Transformer xform = tfactory.newTransformer(new StreamSource(args[3]));
-			xform.transform(new StreamSource(args[1]),new StreamResult(args[4]));
-			
-		} catch (NoSuchMethodException | SecurityException
-				| InstantiationException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException
-				| IOException | TransformerException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public static Class getClassFromFile(String classPath) throws ClassNotFoundException, IOException {
-		Path path = Paths.get(classPath);
-	    URLClassLoader loader = new URLClassLoader(new URL[] {
-	          path.toUri().toURL()
-	    });
-	    Class c = loader.loadClass("csv_to_xml.Book");
-	    loader.close();
-	    return c;
-	}
 		
 		
 		
 		
 		
-		
-/*		Csv csvFile = new Csv();
+		Csv csvFile = new Csv();
 		
 		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -84,24 +69,24 @@ try {
 			e.printStackTrace();
 			
 		}
-	}*/
+	}
 
 
 
-	/*
-	 * private static Object getBook(Document document, String id, String name,
-	 * String gender, String price) { Element book = document.createElement("Book");
-	 * book.setAttribute("id", id); book.appendChild(getfyBookElements(document,
-	 * book, "Name", name)); book.appendChild(getfyBookElements(document, book,
-	 * "Gender", gender)); book.appendChild(getfyBookElements(document, book,
-	 * "Price", price)); return book; }
-	 */
+	
+	  private static Object getBook(Document document, String id, String name,
+	  String gender, String price) { Element book = document.createElement("Book");
+	  book.setAttribute("id", id); book.appendChild(getfyBookElements(document,
+	  book, "Name", name)); book.appendChild(getfyBookElements(document, book,
+	  "Gender", gender)); book.appendChild(getfyBookElements(document, book,
+	  "Price", price)); return book; }
+	 
 
-	/*
-	 * private static Node getfyBookElements(Document document, Element element,
-	 * String name, String value) { Element node = document.createElement(name);
-	 * node.appendChild(document.createTextNode(value)); return node; }
-	 */
+	
+	  private static Node getfyBookElements(Document document, Element element,
+	  String name, String value) { Element node = document.createElement(name);
+	  node.appendChild(document.createTextNode(value)); return node; }
+	 
 }
 
 	
