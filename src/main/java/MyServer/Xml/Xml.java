@@ -34,7 +34,7 @@ import org.w3c.dom.Node;
 
 public class Xml{
 	public static void main(String[] args) {
-		Csv csvFile = new Csv();
+		
 		
 		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -51,10 +51,10 @@ public class Xml{
 			
 			
 			
-			  docElement.appendChild((Node) getBook(document, "1", "Kniha", "g1", "25"));
-			  docElement.appendChild((Node) getBook(document, "2", "Kniha2", "g2", "40"));
-			  docElement.appendChild((Node) getBook(document, "3", "Kniha3", "g3", "15"));
-			  docElement.appendChild((Node) getBook(document, "4", "Kniha4", "g4", "10"));
+			  docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
+			  docElement.appendChild(getBook(document, "2", "Kniha2", "g2", "40"));
+			  docElement.appendChild(getBook(document, "3", "Kniha3", "g3", "15"));
+			  docElement.appendChild(getBook(document, "4", "Kniha4", "g4", "10"));
 			 
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -63,7 +63,7 @@ public class Xml{
 			StreamResult console = new StreamResult(System.out);
 			transformer.transform(source, console);
 
-		}catch(TransformerException|ParserConfigurationException e) {
+		}catch(ParserConfigurationException e) {
 			e.printStackTrace();
 			
 		}
@@ -86,14 +86,7 @@ public class Xml{
 	 
 }
 
-	private static Node getBook(Document document, String id, String name, String gender, String price) {
-		 Element book = document.createElement("Book");
-		  book.setAttribute("id", id); 
-		  book.appendChild(getfyBookElements(document, book, "Name", name));
-		  book.appendChild(getfyBookElements(document, book,"Gender", gender));
-		  book.appendChild(getfyBookElements(document, book, "Price", price)); return book; 
-		
-	}
+
 
 	private static Node getfyBookElements(Document document, Element element, String name, String value) {
 		  Element node = document.createElement(name);

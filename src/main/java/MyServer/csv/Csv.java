@@ -23,37 +23,22 @@ import MyServer.book.Book;
 public class Csv {
 
 
-
-	  public static void main(String[] args) {
-
-	  }
-	  private static List<Book> redBookCsv(String fileName) throws IOException {
-	  fileName = "books.csv"; 
-	  List<Book> books = new ArrayList<>();
-	  
-	  Path path = Paths.get(fileName); try (BufferedReader bufferedReader =Files.newBufferedReader(path)) {
-		  String line = bufferedReader.readLine();
-	  
-			while (line != null) {
-				String[] atributes = line.split(",");
-				Book book =createBook(atributes); books.add(book); 
-	  line = bufferedReader.readLine(); 
-	  } 
-	  
-	  
-	  }
-	  catch (Exception e) { 
-		  
-	  } return books; }
-	  
-	  private static Book createBook(String[] metadata) { 
-		  String id = metadata[0];
-	  String name = metadata[1]; 
-	  String gender = metadata[2]; 
-	  int price = Integer.parseInt(metadata[3]);
-	return null;
-	  
-	  }
+		  public static void main(String[] args) {
+		       String file = "books.csv";
+		       String delimiter = ",";
+		       String line;
+		       List<List<String>> lines = new ArrayList();
+		        try (BufferedReader br =
+		                     new BufferedReader(new FileReader(file))) {
+		            while((line = br.readLine()) != null){
+		                List<String> values = Arrays.asList(line.split(delimiter));
+		                lines.add(values);
+		            }
+		            lines.forEach(l -> System.out.println(l));
+		        } catch (Exception e){
+		            System.out.println(e);
+		        }
+		    }
 	  
 
 }
