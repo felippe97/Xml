@@ -20,7 +20,7 @@ public class Xml {
 
 	public static void main(String[] args) {
 		Csv csvFile = new Csv();
-		csvFile.toString();
+		
 		
 		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
