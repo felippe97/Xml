@@ -1,5 +1,1 @@
-Id, Name,Gender,Price
-1, kniha,G,70
-2, kniha2,G2,50
-3, kniha3,G3,25
-4, kniha4,G4,40
+Id, Name,Gender,Price,1, kniha,G,70,2, kniha2,G2,50,3, kniha3,G3,25,4, kniha4,G4,40

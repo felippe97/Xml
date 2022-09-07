@@ -24,26 +24,35 @@ public class Csv {
 
 
 
-	
+	  public static void main(String[] args) {
 
-	
+	  }
 	  private static List<Book> redBookCsv(String fileName) throws IOException {
-	  fileName = "books.csv"; List<Book> books = new ArrayList<>();
+	  fileName = "books.csv"; 
+	  List<Book> books = new ArrayList<>();
 	  
-	  Path path = Paths.get(fileName); try (BufferedReader bufferedReader =
-	  Files.newBufferedReader(path)) { String line = bufferedReader.readLine();
-	  while (line != null) { String[] atributes = line.split(","); Book book =
-	  createBook(atributes); books.add(book); line = bufferedReader.readLine(); } }
+	  Path path = Paths.get(fileName); try (BufferedReader bufferedReader =Files.newBufferedReader(path)) {
+		  String line = bufferedReader.readLine();
+	  
+			while (line != null) {
+				String[] atributes = line.split(",");
+				Book book =createBook(atributes); books.add(book); 
+	  line = bufferedReader.readLine(); 
+	  } 
+	  
+	  
+	  }
 	  catch (Exception e) { 
 		  
 	  } return books; }
 	  
-	  private static Book createBook(String[] metadata) { String id = metadata[0];
-	  String name = metadata[1]; String gender = metadata[2]; int price =
-	  Integer.parseInt(metadata[3]);
+	  private static Book createBook(String[] metadata) { 
+		  String id = metadata[0];
+	  String name = metadata[1]; 
+	  String gender = metadata[2]; int price = Integer.parseInt(metadata[3]);
 	return null;
 	  
 	  }
-	 
+	  
 
 }

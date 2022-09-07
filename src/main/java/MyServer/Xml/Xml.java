@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -28,25 +29,22 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 
-		
-		
-		
-		
-		
+public class Xml{
 		
 		Csv csvFile = new Csv();
 		
 		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
-		DocumentBuilder documentBuilder;
+		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
 		try {
 			documentBuilder = builderFactory.newDocumentBuilder();
 
 			Document document = documentBuilder.newDocument();
-			Element docElement = document.createElement("Book");
+			Element docElement = document.createElement("books");
 			document.appendChild(docElement);
 		
 				
@@ -65,28 +63,29 @@ import org.w3c.dom.Element;
 			StreamResult console = new StreamResult(System.out);
 			transformer.transform(source, console);
 
-		} catch (TransformerException | ParserConfigurationException e) {
+		}catch(TransformerException|ParserConfigurationException e) {
 			e.printStackTrace();
 			
 		}
-	}
+	
 
 
 
 	
-	  private static Object getBook(Document document, String id, String name,
-	  String gender, String price) { Element book = document.createElement("Book");
-	  book.setAttribute("id", id); book.appendChild(getfyBookElements(document,
-	  book, "Name", name)); book.appendChild(getfyBookElements(document, book,
-	  "Gender", gender)); book.appendChild(getfyBookElements(document, book,
-	  "Price", price)); return book; }
+	  private static Object getBook(Document document, String id, String name, String gender, String price) { 
+	  Element book = document.createElement("Book");
+	  book.setAttribute("id", id); 
+	  book.appendChild(getfyBookElements(document, book, "Name", name));
+	  book.appendChild(getfyBookElements(document, book,"Gender", gender));
+	  book.appendChild(getfyBookElements(document, book, "Price", price)); return book; }
 	 
 
 	
-	  private static Node getfyBookElements(Document document, Element element,
-	  String name, String value) { Element node = document.createElement(name);
-	  node.appendChild(document.createTextNode(value)); return node; }
+	  private static Node getfyBookElements(Document document, Element element, String name, String value) { 
+		  Element node = document.createElement(name);
+	  node.appendChild(document.createTextNode(value)); 
+	  return node; }
 	 
 }
-
+}
 	
