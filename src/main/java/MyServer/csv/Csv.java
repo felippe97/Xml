@@ -49,7 +49,8 @@ public class Csv {
 	  private static Book createBook(String[] metadata) { 
 		  String id = metadata[0];
 	  String name = metadata[1]; 
-	  String gender = metadata[2]; int price = Integer.parseInt(metadata[3]);
+	  String gender = metadata[2]; 
+	  int price = Integer.parseInt(metadata[3]);
 	return null;
 	  
 	  }

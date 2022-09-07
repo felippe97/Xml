@@ -33,7 +33,7 @@ import org.w3c.dom.Node;
 
 
 public class Xml{
-		
+	public static void main(String[] args) {
 		Csv csvFile = new Csv();
 		
 		
@@ -77,15 +77,28 @@ public class Xml{
 	  book.setAttribute("id", id); 
 	  book.appendChild(getfyBookElements(document, book, "Name", name));
 	  book.appendChild(getfyBookElements(document, book,"Gender", gender));
-	  book.appendChild(getfyBookElements(document, book, "Price", price)); return book; }
+	  book.appendChild(getfyBookElements(document, book, "Price", price)); 
+	  return book; 
+	  }
 	 
 
 	
-	  private static Node getfyBookElements(Document document, Element element, String name, String value) { 
-		  Element node = document.createElement(name);
-	  node.appendChild(document.createTextNode(value)); 
-	  return node; }
 	 
 }
+
+	private static Node getBook(Document document, String id, String name, String gender, String price) {
+		 Element book = document.createElement("Book");
+		  book.setAttribute("id", id); 
+		  book.appendChild(getfyBookElements(document, book, "Name", name));
+		  book.appendChild(getfyBookElements(document, book,"Gender", gender));
+		  book.appendChild(getfyBookElements(document, book, "Price", price)); return book; 
+		
+	}
+
+	private static Node getfyBookElements(Document document, Element element, String name, String value) {
+		  Element node = document.createElement(name);
+		  node.appendChild(document.createTextNode(value)); 
+		  return node;
+	}
 }
-	
+
