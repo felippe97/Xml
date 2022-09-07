@@ -12,16 +12,15 @@ import MyServer.book.Book;
 
 public class Csv {
 
-	public static void main(String[] args) throws IOException {
-		List<Book> books = redBookCsv("books.csv");
-		for (Book b : books) {
-			System.out.println(b);
-		}
-
-	}
+	/*
+	 * public static void main(String[] args) throws IOException { List<Book> books
+	 * = redBookCsv("books.csv"); for (Book b : books) { System.out.println(b); }
+	 * 
+	 * }
+	 */
 
 	private static List<Book> redBookCsv(String fileName) throws IOException {
-
+	 fileName = "books.csv";
 		List<Book> books = new ArrayList<>();
 
 		Path path = Paths.get(fileName);
