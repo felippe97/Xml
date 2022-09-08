@@ -15,9 +15,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import MyServer.csv.Csv;
+
 public class Xml {
-	public static void main(String[] args)
-			throws TransformerFactoryConfigurationError, TransformerException, ParserConfigurationException {
+	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException, ParserConfigurationException {
+Csv csv = new Csv();
 
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
