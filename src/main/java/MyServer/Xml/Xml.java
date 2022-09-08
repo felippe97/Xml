@@ -1,6 +1,5 @@
 package MyServer.Xml;
 
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,8 +17,9 @@ import org.w3c.dom.Node;
 import MyServer.csv.Csv;
 
 public class Xml {
-	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException, ParserConfigurationException {
-Csv csv = new Csv();
+	public static void main(String[] args)
+			throws TransformerFactoryConfigurationError, TransformerException, ParserConfigurationException {
+		Csv csv = new Csv();
 
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
@@ -30,11 +30,15 @@ Csv csv = new Csv();
 			Document document = documentBuilder.newDocument();
 			Element docElement = document.createElement("books");
 			document.appendChild(docElement);
-
-			docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
-			docElement.appendChild(getBook(document, "2", "Kniha2", "g2", "40"));
-			docElement.appendChild(getBook(document, "3", "Kniha3", "g3", "15"));
-			docElement.appendChild(getBook(document, "4", "Kniha4", "g4", "10"));
+			
+			
+			docElement.appendChild(getBooks(document, csv));
+			/*
+			 * docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
+			 * docElement.appendChild(getBook(document, "2", "Kniha2", "g2", "40"));
+			 * docElement.appendChild(getBook(document, "3", "Kniha3", "g3", "15"));
+			 * docElement.appendChild(getBook(document, "4", "Kniha4", "g4", "10"));
+			 */
 
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -50,14 +54,24 @@ Csv csv = new Csv();
 
 	}
 
-	private static Node getBook(Document document, String string, String string2, String string3, String string4) {
-		Element book = document.createElement("Book");
-		book.setAttribute("id", string);
-		book.appendChild(getfyBookElements(document, book, "Name", string2));
-		book.appendChild(getfyBookElements(document, book, "Gender", string3));
-		book.appendChild(getfyBookElements(document, book, "Price", string4));
-		return book;
+	private static Node getBooks(Document document, Csv csv) {
+		
+		Element books = document.createElement("Books");
+		books.setAttribute("id", csv.toString());
+		books.appendChild(getfyBookElements(document, books, "Name", csv.toString()));
+		books.appendChild(getfyBookElements(document, books, "Gender", csv.toString()));
+		books.appendChild(getfyBookElements(document, books, "Price", csv.toString()));
+		return books;
 	}
+
+	/*
+	 * private static Node getBook(Document document, String string, String Name,
+	 * String Gender, String Price) { Element book = document.createElement("Book");
+	 * book.setAttribute("id", string); book.appendChild(getfyBookElements(document,
+	 * book, "Name", Name)); book.appendChild(getfyBookElements(document, book,
+	 * "Gender", Gender)); book.appendChild(getfyBookElements(document, book,
+	 * "Price", Price)); return book; }
+	 */
 
 	private static Node getfyBookElements(Document document, Element element, String name, String value) {
 		Element node = document.createElement(name);
