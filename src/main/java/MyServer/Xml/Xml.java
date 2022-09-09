@@ -1,5 +1,7 @@
 package MyServer.Xml;
 
+import java.awt.print.Book;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,7 +22,7 @@ public class Xml {
 	public static void main(String[] args)
 			throws TransformerFactoryConfigurationError, TransformerException, ParserConfigurationException {
 		Csv csv = new Csv();
-
+		Book book = new Book();
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
 		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
@@ -30,8 +32,7 @@ public class Xml {
 			Document document = documentBuilder.newDocument();
 			Element docElement = document.createElement("books");
 			document.appendChild(docElement);
-			
-			
+
 			docElement.appendChild(getBooks(document, csv));
 			/*
 			 * docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
@@ -57,6 +58,7 @@ public class Xml {
 	private static Node getBooks(Document document, Csv csv) {
 		
 		Element books = document.createElement("Books");
+		
 		books.setAttribute("id", csv.toString());
 		books.appendChild(getfyBookElements(document, books, "Name", csv.toString()));
 		books.appendChild(getfyBookElements(document, books, "Gender", csv.toString()));

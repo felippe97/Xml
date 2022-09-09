@@ -5,15 +5,17 @@ public class Book {
 
 	private String name;
 	private String gender;
-	private Integer price;
+	private int price;
 
-	public Book(String id, String name, String gender, String price) {
+	public Book(String id, String name, String gender, int price) {
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
-		this.price = Integer.parseInt(price);
+		this.price = price;
 
 	}
+
+	
 
 	public String getId() {
 		return id;
