@@ -15,8 +15,6 @@ public class Book {
 
 	}
 
-	
-
 	public String getId() {
 		return id;
 	}
@@ -45,13 +43,13 @@ public class Book {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [name=" + name + "gender=" + gender + "price=" + price + "]";
+		return "Book [id=" + id + "name=" + name + "gender=" + gender + "price=" + price + "]";
 	}
 
 }

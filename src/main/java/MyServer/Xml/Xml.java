@@ -22,7 +22,7 @@ public class Xml {
 	public static void main(String[] args)
 			throws TransformerFactoryConfigurationError, TransformerException, ParserConfigurationException {
 		Csv csv = new Csv();
-		Book book = new Book();
+		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
 		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
@@ -56,7 +56,7 @@ public class Xml {
 	}
 
 	private static Node getBooks(Document document, Csv csv) {
-		
+		Book book = new Book();
 		Element books = document.createElement("Books");
 		
 		books.setAttribute("id", csv.toString());
