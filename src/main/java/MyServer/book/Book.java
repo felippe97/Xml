@@ -5,13 +5,13 @@ public class Book {
 
 	private String name;
 	private String gender;
-	private int price;
 
-	public Book(String id, String name, String gender, int price) {
+
+	public Book(String id, String name, String gender) {
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
-		this.price = price;
+		
 
 	}
 
@@ -39,17 +39,11 @@ public class Book {
 		this.gender = gende;
 	}
 
-	public int getPrice() {
-		return price;
-	}
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + "name=" + name + "gender=" + gender + "price=" + price + "]";
+		return "Book [id=" + id + "name=" + name + "gender=" + gender +  "]";
 	}
 
 }
