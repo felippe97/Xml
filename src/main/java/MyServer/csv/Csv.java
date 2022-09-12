@@ -12,66 +12,62 @@ import java.util.List;
 
 public class Csv {
 
-	// public static void main(String[] args) {
+	
 	String file = "books.csv";
 	String del = ",";
 	String line;
 	private String books;
-
+	
 	public String Books() throws IOException {
 
+		try (
+
+				BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+
+			while ((line = bufferedReader.readLine()) != null) {
+
+				List<String> list = Arrays.asList(line.split(del));
+
+				return books = list.toString();
+
+			}
+
+		} catch (Exception e) {
+
+		}
+		return null;
+
 		
-		  try (
-		  
-		  BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-		  
-		  while ((line = bufferedReader.readLine()) != null) {
-		  
-		  List<String> list = Arrays.asList(line.split(del));
-		 
-		return books = list.toString(); 
-		  
-		  } 
-		  
-		 } catch (Exception e) {
-		  
-		  } 
-		  return null;
-		 
-		  
-		
-		/*
-		 * Path path = java.nio.file.Path.of("books.csv"); String str =
-		 * Files.readString(path); return str;
-		 */
-		 
+
 	}
-	  String[] parts = books.split("(?<=-,)");
-	  String id = parts[0]; 
-	  String name = parts[1];
-	  String gender = parts[2];
-	  public String getId() {
-			return id;
-		}
 
-		public void setId(String id) {
-			this.id = id;
-		}
+	String[] parts = books.split(",");
+	String id = parts[0];
+	String name = parts[1];
+	String gender = parts[2];
 
-		public String getName() {
-			return name;
-		}
+	public String getId() {
+		return id;
+	}
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	public void setId(String id) {
+		this.id = id;
+	}
 
-		public String getGende() {
-			return gender;
-		}
+	public String getName() {
+		return name;
+	}
 
-		public void setGende(String gende) {
-			this.gender = gende;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 }
