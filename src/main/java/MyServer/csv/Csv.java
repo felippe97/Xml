@@ -1,45 +1,77 @@
 package MyServer.csv;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
-
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
+
 import java.util.List;
 
 public class Csv {
-//private String fileName = "books.csv";
 
-	/*
-	 * public ArrayList<String[]> CSVtoArrayList(String csvFile, String csvSplit)
-	 * throws IOException { ArrayList<String[]> elements = new
-	 * ArrayList<String[]>(); BufferedReader csvReader = null; String line;
-	 * 
-	 * try { csvReader = new BufferedReader(new FileReader(csvFile)); } catch
-	 * (FileNotFoundException e) { e.printStackTrace(); }
-	 * 
-	 * while ((line = csvReader.readLine()) != null) { String[] nodes =
-	 * line.split(csvSplit); elements.add(nodes); }
-	 * 
-	 * return elements; }
-	 */
+	// public static void main(String[] args) {
+	String file = "books.csv";
+	String del = ",";
+	String line;
+	private String books;
 
-	public static void main(String[] args) {
-		String file = "books.csv";
-		String delimiter = ", ' : ;";
-		String line;
-		List<String> lines = new ArrayList<String>();
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-			while ((line = br.readLine()) != null) {
-				List<String> values = Arrays.asList(line.split(delimiter));
-				lines.addAll(values);
-			}
-			lines.forEach(l -> System.out.println(l));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+	public String Books() throws IOException {
+
+		
+		  try (
+		  
+		  BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+		  
+		  while ((line = bufferedReader.readLine()) != null) {
+		  
+		  List<String> list = Arrays.asList(line.split(del));
+		 
+		return books = list.toString(); 
+		  
+		  } 
+		  
+		 } catch (Exception e) {
+		  
+		  } 
+		  return null;
+		 
+		  
+		
+		/*
+		 * Path path = java.nio.file.Path.of("books.csv"); String str =
+		 * Files.readString(path); return str;
+		 */
+		 
 	}
+	  String[] parts = books.split("(?<=-,)");
+	  String id = parts[0]; 
+	  String name = parts[1];
+	  String gender = parts[2];
+	  public String getId() {
+			return id;
+		}
+
+		public void setId(String id) {
+			this.id = id;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getGende() {
+			return gender;
+		}
+
+		public void setGende(String gende) {
+			this.gender = gende;
+		}
 
 }
