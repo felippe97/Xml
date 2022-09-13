@@ -47,7 +47,6 @@ public class Xml {
 			 */
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
 			DOMSource source = new DOMSource(document);
 			StreamResult console = new StreamResult(System.out);
 			transformer.transform(source, console);
