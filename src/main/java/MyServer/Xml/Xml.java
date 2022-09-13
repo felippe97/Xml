@@ -1,5 +1,7 @@
 package MyServer.Xml;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,32 +17,35 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-
 import MyServer.csv.Csv;
 
 public class Xml {
 
-	public static void main(String[] args)
-			throws TransformerFactoryConfigurationError, TransformerException, ParserConfigurationException {
+	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException,
+			ParserConfigurationException, FileNotFoundException, IOException {
 
 		Csv csv = new Csv();
+		String id = csv.getId();
+		String name = csv.getName();
+		String gender = csv.getGender();
+		String price = csv.getPrice();
 
-		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
 		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
 
 		try {
+
 			documentBuilder = builderFactory.newDocumentBuilder();
 
 			Document document = documentBuilder.newDocument();
 			Element docElement = document.createElement("books");
 			document.appendChild(docElement);
 
-			docElement.appendChild(getBooks(document, csv.getId(), csv.getName(), csv.getGender()));
+			docElement.appendChild(getBooks(document, id, name, gender, price));
 
 			/*
-			 * docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
+			 * docElement.appendChild(getBooks(document, "1", "Kniha", "g1", "25"));
 			 * docElement.appendChild(getBook(document, "2", "Kniha2", "g2", "40"));
 			 * docElement.appendChild(getBook(document, "3", "Kniha3", "g3", "15"));
 			 * docElement.appendChild(getBook(document, "4", "Kniha4", "g4", "10"));
@@ -58,18 +63,16 @@ public class Xml {
 
 	}
 
-	private static Node getBooks(Document document, String id, String name, String gender) {
+	private static Node getBooks(Document document, String id, String name, String gender, String price) {
 		Element books = document.createElement("Books");
 
 		books.setAttribute("id", id);
 		books.appendChild(getfyBookElements(document, books, "Name", name));
 		books.appendChild(getfyBookElements(document, books, "Gender", gender));
-
+		books.appendChild(getfyBookElements(document, books, "Price", price));
 		return books;
-	
-	}
 
-	
+	}
 
 	/*
 	 * private static Node getBook(Document document, String string, String Name,
