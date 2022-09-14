@@ -21,16 +21,21 @@ import MyServer.csv.Csv;
 
 public class Xml {
 
+	private static String gender;
+	private static String id;
+	private static String name;
+	private static String price;
+
 	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException,
 			ParserConfigurationException, FileNotFoundException, IOException {
 		Csv csv = new Csv();
-		Book book = new Book();
+		Book book = new Book(id, name, gender, price);
 
 		String gender = book.getGende();
 		String id = book.getId();
 		String name = book.getName();
 		String price = book.getPrice();
-
+		
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
 		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();

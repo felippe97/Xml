@@ -18,26 +18,23 @@ public class Csv {
 
 	
 
-	public String csv(String id,String name, String gender, String price) {
+	public Book csv(String id,String name, String gender, String price) {
 
-		Book book = new Book();
+		Book book = new Book(price, price, price, price);
 
 		HashMap<String, String> books = new HashMap<>();
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
 			while ((line = bufferedReader.readLine()) != null) {
 
 				String[] csv = line.split(del);
-				id = books.put(csv[0], csv[1]);
-				name = books.put(csv[1], csv[3]);
-				gender = books.put(csv[2], csv[3]);
-				price = books.put(csv[3], csv[0]);
-				return id + name + gender + price;
+				book.setId(books.get(csv[0]));
+				book.setName(books.get(csv[1])); 
+				book.setGende(books.get(csv[2])); 
+				book.setGende(books.get(csv[3]));
+				return book;
 			}
-			
-			book.setId(id);
-			book.setName(name);
-			book.setGende(gender);
-			book.setPrice(price);
+			book.getId();
+		
 			
 
 		} catch (IOException e) {
