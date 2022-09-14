@@ -16,19 +16,26 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import MyServer.book.Book;
 
-import MyServer.csv.Csv;
 
 public class Xml {
 
 	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException,
 			ParserConfigurationException, FileNotFoundException, IOException {
 
-		Csv csv = new Csv();
-		String id = csv.getId();
-		String name = csv.getName();
-		String gender = csv.getGender();
-		String price = csv.getPrice();
+		String id;
+		String name = null;
+		String gender = null;
+		String price = null;
+
+		Book book = new Book(id, name, gender, price);
+	
+
+		id = book.getId();
+		name = book.getName();
+		gender = book.getGende();
+		price = book.getPrice();
 
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
