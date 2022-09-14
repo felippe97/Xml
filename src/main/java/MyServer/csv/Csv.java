@@ -18,7 +18,7 @@ public class Csv {
 
 	
 
-	public Book csv(String id,String name, String gender, String price) {
+	public String csv(String id,String name, String gender, String price) {
 
 		Book book = new Book(price, price, price, price);
 
@@ -30,8 +30,8 @@ public class Csv {
 				book.setId(books.get(csv[0]));
 				book.setName(books.get(csv[1])); 
 				book.setGende(books.get(csv[2])); 
-				book.setGende(books.get(csv[3]));
-				return book;
+				book.setPrice(books.get(csv[3]));
+				return book.getId() + book.getName() + book.getGende() + book.getPrice();
 			}
 			book.getId();
 		
