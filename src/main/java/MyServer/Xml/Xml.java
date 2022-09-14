@@ -17,25 +17,19 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import MyServer.book.Book;
-
+import MyServer.csv.Csv;
 
 public class Xml {
 
 	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException,
 			ParserConfigurationException, FileNotFoundException, IOException {
 
-		String id;
-		String name = null;
-		String gender = null;
-		String price = null;
+		Book book = new Book();
 
-		Book book = new Book(id, name, gender, price);
-	
-
-		id = book.getId();
-		name = book.getName();
-		gender = book.getGende();
-		price = book.getPrice();
+		String gender = book.getGende();
+		String id = book.getId();
+		String name = book.getName();
+		String price = book.getPrice();
 
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
@@ -49,7 +43,7 @@ public class Xml {
 			Element docElement = document.createElement("books");
 			document.appendChild(docElement);
 
-			docElement.appendChild(getBooks(document, id, name, gender, price));
+			docElement.appendChild(getBook(document, id, name, gender, price));
 
 			/*
 			 * docElement.appendChild(getBooks(document, "1", "Kniha", "g1", "25"));
@@ -70,14 +64,14 @@ public class Xml {
 
 	}
 
-	private static Node getBooks(Document document, String id, String name, String gender, String price) {
-		Element books = document.createElement("Books");
+	private static Node getBook(Document document, String id, String name, String gender, String price) {
+		Element book = document.createElement("Books");
 
-		books.setAttribute("id", id);
-		books.appendChild(getfyBookElements(document, books, "Name", name));
-		books.appendChild(getfyBookElements(document, books, "Gender", gender));
-		books.appendChild(getfyBookElements(document, books, "Price", price));
-		return books;
+		book.setAttribute("id", id);
+		book.appendChild(getfyBookElements(document, book, "Name", name));
+		book.appendChild(getfyBookElements(document, book, "Gender", gender));
+		book.appendChild(getfyBookElements(document, book, "Price", price));
+		return book;
 
 	}
 
