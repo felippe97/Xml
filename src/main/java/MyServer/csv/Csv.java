@@ -1,58 +1,55 @@
 package MyServer.csv;
 
 import java.io.BufferedReader;
-
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
-import com.opencsv.CSVReader;
 
 import MyServer.book.Book;
 
 public class Csv {
 
-	String books;
+	
 	String del = ",";
-	String line;
-
+	String line = " ";
 	String csvFile = "books.csv";
+	
 
-	String name;
-	String id;
-	String gender;
-	String price;
+	
 
-	public String book() {
+	public String csv(String id,String name, String gender, String price) {
 
-		Book booq = new Book();
+		Book book = new Book();
 
 		HashMap<String, String> books = new HashMap<>();
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
 			while ((line = bufferedReader.readLine()) != null) {
 
-				String[] book = line.split(del);
-				id = books.get(book[0]);
-				name = books.get(book[1]);
-				gender = books.get(book[2]);
-				price = books.get(book[3]);
-				
+				String[] csv = line.split(del);
+				id = books.put(csv[0], csv[1]);
+				name = books.put(csv[1], csv[3]);
+				gender = books.put(csv[2], csv[3]);
+				price = books.put(csv[3], csv[0]);
+				return id + name + gender + price;
 			}
-			booq.setId(id);
-			booq.setName(name);
-			booq.setGende(gender);
-			booq.setPrice(price);
+			
+			book.setId(id);
+			book.setName(name);
+			book.setGende(gender);
+			book.setPrice(price);
 			
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return null;
-
 	}
+	
+	
 
+	
 }
 
 /*

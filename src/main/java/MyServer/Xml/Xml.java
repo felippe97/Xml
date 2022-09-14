@@ -23,7 +23,7 @@ public class Xml {
 
 	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException,
 			ParserConfigurationException, FileNotFoundException, IOException {
-
+		Csv csv = new Csv();
 		Book book = new Book();
 
 		String gender = book.getGende();
