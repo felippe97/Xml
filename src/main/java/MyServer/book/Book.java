@@ -6,15 +6,14 @@ public class Book {
 	private String gender;
 	private String price;
 
-	
-	  public Book(String id, String name, String gender, String price) { this.id =
-	  id; this.name = name; this.gender = gender; this.price = price;
-	  
-	  }
-	 
+	public Book(String id, String name, String gender, String price) {
 
-	
-	
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.price = price;
+
+	}
 
 	public String getId() {
 		return id;
@@ -47,10 +46,10 @@ public class Book {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Book [id=" + id + "name=" + name + "gender=" + gender + "price=" + price + "]";
 	}
-	
+
 }

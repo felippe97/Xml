@@ -35,7 +35,8 @@ public class Xml {
 		String id = book.getId();
 		String name = book.getName();
 		String price = book.getPrice();
-		System.out.println(book);
+		System.out.println(book.getId());
+		System.out.println(id);
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
 		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();

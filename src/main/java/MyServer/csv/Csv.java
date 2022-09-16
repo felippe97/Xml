@@ -5,48 +5,49 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-
 import MyServer.book.Book;
 
 public class Csv {
 
-	
 	String del = ",";
 	String line = " ";
 	String csvFile = "books.csv";
-	
+	String id;
+	String name;
+	String gender;
+	String price;
 
-	
-
-	public String csv(String id,String name, String gender, String price) {
-
-		Book book = new Book(price, price, price, price);
-
+	public String csv() {
+		Book book = new Book(id, name, gender, price);
 		HashMap<String, String> books = new HashMap<>();
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
 			while ((line = bufferedReader.readLine()) != null) {
 
 				String[] csv = line.split(del);
-				book.setId(books.get(csv[0]));
-				book.setName(books.get(csv[1])); 
-				book.setGende(books.get(csv[2])); 
-				book.setPrice(books.get(csv[3]));
-				return book.getId() + book.getName() + book.getGende() + book.getPrice();
+				/*
+				 * books.put(csv[0], "1"); books.put(csv[1], "2"); books.put(csv[2], "3");
+				 * books.put(csv[3], "4");
+				 */
+
+				id = books.get(csv[0]);
+				name = books.get(csv[1]);
+				gender = books.get(csv[2]);
+				price = books.get(csv[3]);
+				return id + name + gender + price;
 			}
-			book.getId();
-		
-			
+			book.setId(id);
+			book.setName(name);
+			book.setGende(gender);
+			book.setPrice(price);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		return null;
-	}
-	
-	
 
-	
+		return null;
+
+	}
+
 }
 
 /*
@@ -91,6 +92,5 @@ public class Csv {
  * public String getGender() { return gender; }
  * 
  * 
- * public void setGender(String gender) { this.gender = gender; }
- * }
+ * public void setGender(String gender) { this.gender = gender; } }
  */
