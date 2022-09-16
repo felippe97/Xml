@@ -24,10 +24,7 @@ public class Csv {
 			while ((line = bufferedReader.readLine()) != null) {
 
 				String[] csv = line.split(del);
-				/*
-				 * books.put(csv[0], "1"); books.put(csv[1], "2"); books.put(csv[2], "3");
-				 * books.put(csv[3], "4");
-				 */
+				
 
 				id = books.get(csv[0]);
 				name = books.get(csv[1]);
