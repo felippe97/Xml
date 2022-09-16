@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.apache.logging.log4j.core.Logger;
+import org.slf4j.LoggerFactory;
+
 import MyServer.book.Book;
 
 public class Csv {
@@ -16,7 +19,7 @@ public class Csv {
 	String name;
 	String gender;
 	String price;
-
+	
 	public String csv() {
 		Book book = new Book(id, name, gender, price);
 		HashMap<String, String> books = new HashMap<>();
@@ -24,19 +27,23 @@ public class Csv {
 			while ((line = bufferedReader.readLine()) != null) {
 
 				String[] csv = line.split(del);
+				id = books.put(csv[0], "1");
+				name= books.put(csv[1], "2");
+				gender = books.put(csv[2], "3");
+				price = books.put(csv[3], "4");
 				
-
-				id = books.get(csv[0]);
-				name = books.get(csv[1]);
-				gender = books.get(csv[2]);
-				price = books.get(csv[3]);
-				return id + name + gender + price;
+				books.get(csv[0]);
+				books.get(csv[1]);
+				books.get(csv[2]);
+				books.get(csv[3]);
+				 return id.toString() + name + gender + price;
+				
 			}
 			book.setId(id);
 			book.setName(name);
 			book.setGende(gender);
 			book.setPrice(price);
-
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

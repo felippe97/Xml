@@ -13,9 +13,12 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+
 import MyServer.book.Book;
 import MyServer.csv.Csv;
 
@@ -25,19 +28,20 @@ public class Xml {
 	private static String id;
 	private static String name;
 	private static String price;
+	private static Logger log = LoggerFactory.getLogger(Xml.class);
 
 	public static void main(String[] args) throws TransformerFactoryConfigurationError, TransformerException,
 			ParserConfigurationException, FileNotFoundException, IOException {
 		Csv csv = new Csv();
 		Book book = new Book(id, name, gender, price);
-	
-		String gender = book.getGende();
-		String id = book.getId();
-		String name = book.getName();
-		String price = book.getPrice();
-		System.out.println(book.getId());
-		System.out.println(id);
+
+		/*
+		 * String gender = book.getGende(); String id = book.getId(); String name =
+		 * book.getName(); String price = book.getPrice();
+		 */
+
 		DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+		log.info(id);
 
 		DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
 
@@ -48,15 +52,12 @@ public class Xml {
 			Document document = documentBuilder.newDocument();
 			Element docElement = document.createElement("books");
 			document.appendChild(docElement);
-
+			docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
 			docElement.appendChild(getBook(document, id, name, gender, price));
+			docElement.appendChild(getBook(document, book.getId(), book.getName(), book.getGende(), book.getPrice()));
+		
 
-			/*
-			 * docElement.appendChild(getBooks(document, "1", "Kniha", "g1", "25"));
-			 * docElement.appendChild(getBook(document, "2", "Kniha2", "g2", "40"));
-			 * docElement.appendChild(getBook(document, "3", "Kniha3", "g3", "15"));
-			 * docElement.appendChild(getBook(document, "4", "Kniha4", "g4", "10"));
-			 */
+			log.info(id);
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource source = new DOMSource(document);
@@ -72,7 +73,10 @@ public class Xml {
 
 	private static Node getBook(Document document, String id, String name, String gender, String price) {
 		Element book = document.createElement("Books");
-
+		Book books = new Book(id, name, gender, price);
+		id=books.getId();
+		name = books.getName();
+		log.info("getBook  " + id + " " + name + " " + gender + " " + price);
 		book.setAttribute("id", id);
 		book.appendChild(getfyBookElements(document, book, "Name", name));
 		book.appendChild(getfyBookElements(document, book, "Gender", gender));
@@ -91,9 +95,11 @@ public class Xml {
 	 */
 
 	private static Node getfyBookElements(Document document, Element element, String name, String string) {
+		log.info("getfyBookElements  " + name);
 		Element node = document.createElement(name);
 		node.appendChild(document.createTextNode(string));
 		return node;
+	
 	}
 
 }
