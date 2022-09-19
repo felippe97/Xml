@@ -53,7 +53,7 @@ public class Xml {
 			Element docElement = document.createElement("books");
 			document.appendChild(docElement);
 			docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
-			docElement.appendChild(getBook(document, id, name, gender, price));
+			
 			docElement.appendChild(getBook(document, book.getId(), book.getName(), book.getGende(), book.getPrice()));
 		
 
