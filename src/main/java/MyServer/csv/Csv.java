@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import com.opencsv.CSVParser;
@@ -20,31 +21,52 @@ public class Csv {
 
 	String del = ",";
 	String line = " ";
+
 	String csvFile = "books.csv";
 	String id;
 	String name;
 	String gender;
 	String price;
-
+	String stlpec;
+	String data;
 	public String csv() {
 
 		HashMap<String, String> books = new HashMap<>();
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
+			bufferedReader.readLine();
+			String line1 = null;
+			boolean first = true;
 			while ((line = bufferedReader.readLine()) != null) {
+				if (first) {
+					String[] riadok = line.split(del);
+					int iterator = riadok.length;
+					if (iterator > 0) {
+						return stlpec = riadok.toString();
 
-				String[] csv = line.split(del);
+					}
 
-				id = books.get(csv[0]);
-				name = books.get(csv[1]);
-				gender = books.get(csv[2]);
-				price = books.get(csv[3]);
+					first = false;
+				} else {
+					
+					while (stlpec != null) {
+						String[] druhy = line.split(del);
+						
+					}
+					books.put(id, data);
+					books.put(name, name);
+					books.put(gender, gender);
+					books.put(gender, gender);
+				}
 
 			}
+			id = books.get(id);
+			name = books.get(name);
+			gender = books.get(gender);
+			price = books.get(price);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return id + name + gender + price;
 
 	}
