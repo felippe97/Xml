@@ -49,13 +49,18 @@ public class Csv {
 				} else {
 					
 					while (stlpec != null) {
-						String[] druhy = line.split(del);
+						String[] second = line.split(del);
+						if (second != null) {
+							books.put(id, second[0]);
+							books.put(name, second[1]);
+							books.put(gender, second[2]);
+							books.put(price, second[3]);
+						}
+						
+						
 						
 					}
-					books.put(id, data);
-					books.put(name, name);
-					books.put(gender, gender);
-					books.put(gender, gender);
+					
 				}
 
 			}
