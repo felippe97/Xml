@@ -54,7 +54,7 @@ public class Xml {
 			document.appendChild(docElement);
 			docElement.appendChild(getBook(document, "1", "Kniha", "g1", "25"));
 			
-			docElement.appendChild(getBook(document, book.getId(), book.getName(), book.getGende(), book.getPrice()));
+			docElement.appendChild(getBook(document, csv.getId(), csv.getName(), csv.getGender(), csv.getPrice()));
 		
 
 			log.info(id);
@@ -85,14 +85,6 @@ public class Xml {
 
 	}
 
-	/*
-	 * private static Node getBook(Document document, String string, String Name,
-	 * String Gender, String Price) { Element book = document.createElement("Book");
-	 * book.setAttribute("id", string); book.appendChild(getfyBookElements(document,
-	 * book, "Name", Name)); book.appendChild(getfyBookElements(document, book,
-	 * "Gender", Gender)); book.appendChild(getfyBookElements(document, book,
-	 * "Price", Price)); return book; }
-	 */
 
 	private static Node getfyBookElements(Document document, Element element, String name, String string) {
 		log.info("getfyBookElements  " + name);
