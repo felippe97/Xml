@@ -19,86 +19,52 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 public class Csv {
 
-	String del = ",";
-	String line = " ";
+	
 
-	String csvFile = "books.csv";
-	String id;
-	String name;
-	String gender;
-	String price;
-	String stlpce;
-	String data;
-
-	public String csv() {
-
+	public static void main(String[] args) {
+		String csvFile = "books.csv";
+		
+		String del = ",";
+		String line = " ";
 		HashMap<String, String> books = new HashMap<>();
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
 			bufferedReader.readLine();
-			
+
 			boolean first = true;
+			String[] header = null;
 			while ((line = bufferedReader.readLine()) != null) {
 				if (first) {
-					String[] riadok = line.split(del);
-
-					for(String stlpce: riadok) {
-						
-						return stlpce;
-					}
+					header = line.split(del);
+//
+//					for (String stlpce : riadok) {
+//
+//						return stlpce;
+//					}
 
 					first = false;
 				} else {
 
-					String[] second = line.split(del);
-					for(String data: second) {
-						
+					String[] data = line.split(del);
+					for (int i = 0; i < header.length; i++) {
+						System.out.println("<" + header[i] + ">" + data[i] + "</" + header[i] + ">");
 					}
 
 				}
-
+//				while (data != null) {
+//					books.put(stlpce, data);
+//				}
 			}
-			id = books.get(id);
-			name = books.get(name);
-			gender = books.get(gender);
-			price = books.get(price);
+//			id = books.get(stlpce);
+//			name = books.get(name);
+//			gender = books.get(gender);
+//			price = books.get(price);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return id + name + gender + price;
+		//return id + name + gender + price;
 
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
 
 }
