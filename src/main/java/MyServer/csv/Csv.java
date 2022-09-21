@@ -27,40 +27,33 @@ public class Csv {
 	String name;
 	String gender;
 	String price;
-	String stlpec;
+	String stlpce;
 	String data;
+
 	public String csv() {
 
 		HashMap<String, String> books = new HashMap<>();
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
 			bufferedReader.readLine();
-			String line1 = null;
+			
 			boolean first = true;
 			while ((line = bufferedReader.readLine()) != null) {
 				if (first) {
 					String[] riadok = line.split(del);
-					int iterator = riadok.length;
-					if (iterator > 0) {
-						return stlpec = riadok.toString();
 
+					for(String stlpce: riadok) {
+						
+						return stlpce;
 					}
 
 					first = false;
 				} else {
-					
-					while (stlpec != null) {
-						String[] second = line.split(del);
-						if (second != null) {
-							books.put(id, second[0]);
-							books.put(name, second[1]);
-							books.put(gender, second[2]);
-							books.put(price, second[3]);
-						}
-						
-						
+
+					String[] second = line.split(del);
+					for(String data: second) {
 						
 					}
-					
+
 				}
 
 			}
